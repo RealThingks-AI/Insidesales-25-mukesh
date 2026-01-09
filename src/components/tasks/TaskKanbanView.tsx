@@ -18,7 +18,7 @@ const columns: { id: TaskStatus; title: string; color: string }[] = [
   { id: 'open', title: 'Open', color: 'border-t-blue-500' },
   { id: 'in_progress', title: 'In Progress', color: 'border-t-purple-500' },
   { id: 'completed', title: 'Completed', color: 'border-t-green-500' },
-  { id: 'cancelled', title: 'Cancelled', color: 'border-t-gray-500' },
+  { id: 'deferred', title: 'Deferred', color: 'border-t-orange-500' },
 ];
 
 const priorityColors = {

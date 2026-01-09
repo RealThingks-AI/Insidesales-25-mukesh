@@ -1,4 +1,4 @@
-export type TaskStatus = 'open' | 'in_progress' | 'completed' | 'cancelled';
+export type TaskStatus = 'open' | 'in_progress' | 'completed' | 'deferred';
 export type TaskPriority = 'high' | 'medium' | 'low';
 export type TaskModuleType = 'accounts' | 'contacts' | 'leads' | 'meetings' | 'deals';
 

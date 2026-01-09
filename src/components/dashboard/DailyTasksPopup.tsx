@@ -222,7 +222,7 @@ export const DailyTasksPopup = ({ onViewTask }: DailyTasksPopupProps) => {
     let tasks = [...todaysTasks];
 
     if (!showCompleted) {
-      tasks = tasks.filter(t => t.status !== 'completed' && t.status !== 'cancelled');
+      tasks = tasks.filter(t => t.status !== 'completed' && t.status !== 'deferred');
     }
 
     tasks.sort((a, b) => {

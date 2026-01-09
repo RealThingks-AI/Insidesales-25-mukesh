@@ -85,7 +85,7 @@ async function sendEmailViaGraph(
   }
 }
 
-type NotificationType = "task_assigned" | "task_unassigned" | "status_in_progress" | "status_completed" | "status_cancelled" | "status_open";
+type NotificationType = "task_assigned" | "task_unassigned" | "status_in_progress" | "status_completed" | "status_deferred" | "status_open";
 
 interface TaskNotificationRequest {
   taskId: string;
@@ -110,8 +110,8 @@ const getEmailSubject = (type: NotificationType, taskTitle: string): string => {
       return `🔄 Task In Progress: ${taskTitle}`;
     case "status_completed":
       return `✅ Task Completed: ${taskTitle}`;
-    case "status_cancelled":
-      return `❌ Task Cancelled: ${taskTitle}`;
+    case "status_deferred":
+      return `⏸️ Task Deferred: ${taskTitle}`;
     case "status_open":
       return `📝 Task Reopened: ${taskTitle}`;
     default:
@@ -155,11 +155,11 @@ const getEmailContent = (
         message: `<strong>${updatedByName || "Someone"}</strong> has completed this task.`,
         color: "#22c55e",
       };
-    case "status_cancelled":
+    case "status_deferred":
       return {
-        heading: "Task Cancelled",
-        message: `<strong>${updatedByName || "Someone"}</strong> has cancelled this task.`,
-        color: "#ef4444",
+        heading: "Task Deferred",
+        message: `<strong>${updatedByName || "Someone"}</strong> has deferred this task.`,
+        color: "#f97316",
       };
     case "status_open":
       return {

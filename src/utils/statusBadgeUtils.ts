@@ -1,7 +1,7 @@
 // Shared status badge utilities for consistent styling across components
 
 // Task Status Utilities
-export const TASK_STATUSES = ['open', 'in_progress', 'completed', 'cancelled'] as const;
+export const TASK_STATUSES = ['open', 'in_progress', 'completed', 'deferred'] as const;
 export type TaskStatusType = typeof TASK_STATUSES[number];
 
 export const getTaskStatusColor = (status?: string | null): string => {
@@ -12,8 +12,8 @@ export const getTaskStatusColor = (status?: string | null): string => {
       return 'bg-amber-50 text-amber-700 dark:bg-amber-900/20 dark:text-amber-300 border-amber-200 dark:border-amber-800';
     case 'completed':
       return 'bg-emerald-50 text-emerald-700 dark:bg-emerald-900/20 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800';
-    case 'cancelled':
-      return 'bg-gray-100 text-gray-600 dark:bg-gray-800/30 dark:text-gray-400 border-gray-200 dark:border-gray-700';
+    case 'deferred':
+      return 'bg-orange-50 text-orange-700 dark:bg-orange-900/20 dark:text-orange-300 border-orange-200 dark:border-orange-800';
     default:
       return 'bg-muted text-muted-foreground border-border';
   }
@@ -27,8 +27,8 @@ export const getTaskStatusLabel = (status?: string | null): string => {
       return 'In Progress';
     case 'completed':
       return 'Completed';
-    case 'cancelled':
-      return 'Cancelled';
+    case 'deferred':
+      return 'Deferred';
     default:
       return status || 'Unknown';
   }

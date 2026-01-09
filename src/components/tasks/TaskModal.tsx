@@ -62,7 +62,7 @@ const TIME_SLOTS = generateTimeSlots();
 const taskSchema = z.object({
   title: z.string().min(1, 'Task title is required'),
   description: z.string().optional(),
-  status: z.enum(['open', 'in_progress', 'completed', 'cancelled']),
+  status: z.enum(['open', 'in_progress', 'completed', 'deferred']),
   priority: z.enum(['high', 'medium', 'low']),
   due_date: z.string().min(1, 'Due date is required'),
   due_time: z.string().optional(),
@@ -691,7 +691,7 @@ export const TaskModal = ({
                           <SelectItem value="open">Open</SelectItem>
                           <SelectItem value="in_progress">In Progress</SelectItem>
                           <SelectItem value="completed">Completed</SelectItem>
-                          <SelectItem value="cancelled">Cancelled</SelectItem>
+                          <SelectItem value="deferred">Deferred</SelectItem>
                         </SelectContent>
                       </Select>
                       <FormMessage />

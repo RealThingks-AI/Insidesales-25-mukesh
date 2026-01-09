@@ -657,7 +657,7 @@ const UserDashboard = ({ hideHeader = false }: UserDashboardProps) => {
         open: tasks.filter(t => t.status === 'open').length,
         inProgress: tasks.filter(t => t.status === 'in_progress').length,
         completed: tasks.filter(t => t.status === 'completed').length,
-        cancelled: tasks.filter(t => t.status === 'cancelled').length,
+        deferred: tasks.filter(t => t.status === 'deferred').length,
       };
       const today = format(new Date(), 'yyyy-MM-dd');
       const overdue = tasks.filter(t => t.due_date && t.due_date < today && ['open', 'in_progress'].includes(t.status)).length;
@@ -1379,11 +1379,11 @@ const UserDashboard = ({ hideHeader = false }: UserDashboardProps) => {
                   <p className="text-[9px] text-muted-foreground leading-tight">Completed</p>
                 </div>
                 <div 
-                  className="text-center p-1.5 bg-red-50 dark:bg-red-950/20 rounded cursor-pointer hover:bg-red-100 dark:hover:bg-red-950/40 transition-colors flex flex-col items-center justify-center min-h-0"
-                  onClick={(e) => { e.stopPropagation(); navigate('/tasks?status=cancelled&owner=me'); }}
+                  className="text-center p-1.5 bg-orange-50 dark:bg-orange-950/20 rounded cursor-pointer hover:bg-orange-100 dark:hover:bg-orange-950/40 transition-colors flex flex-col items-center justify-center min-h-0"
+                  onClick={(e) => { e.stopPropagation(); navigate('/tasks?status=deferred&owner=me'); }}
                 >
-                  <p className="text-base font-bold text-red-600 leading-tight">{taskReminders?.byStatus?.cancelled || 0}</p>
-                  <p className="text-[9px] text-muted-foreground leading-tight">Cancelled</p>
+                  <p className="text-base font-bold text-orange-600 leading-tight">{taskReminders?.byStatus?.deferred || 0}</p>
+                  <p className="text-[9px] text-muted-foreground leading-tight">Deferred</p>
                 </div>
               </div>
             </CardContent>

@@ -80,7 +80,7 @@ export const RelatedTasksSection = ({
   };
 
   const getDueDateInfo = (dueDate: string | null, status: string) => {
-    if (!dueDate || status === 'completed' || status === 'cancelled') return { isOverdue: false };
+    if (!dueDate || status === 'completed' || status === 'deferred') return { isOverdue: false };
     const date = new Date(dueDate);
     date.setHours(0, 0, 0, 0);
     const today = new Date();
@@ -89,7 +89,7 @@ export const RelatedTasksSection = ({
   };
 
   const openTasks = tasks.filter(t => t.status === 'open' || t.status === 'in_progress');
-  const completedTasks = tasks.filter(t => t.status === 'completed' || t.status === 'cancelled');
+  const completedTasks = tasks.filter(t => t.status === 'completed' || t.status === 'deferred');
 
   if (loading) {
     return (
