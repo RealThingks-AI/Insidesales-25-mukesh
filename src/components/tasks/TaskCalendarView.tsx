@@ -21,7 +21,7 @@ const statusColors: Record<TaskStatus, string> = {
   open: 'border-l-blue-500',
   in_progress: 'border-l-purple-500',
   completed: 'border-l-green-500 opacity-60',
-  cancelled: 'border-l-gray-500 opacity-60',
+  deferred: 'border-l-orange-500 opacity-60',
 };
 
 export const TaskCalendarView = ({ tasks, onEdit }: TaskCalendarViewProps) => {

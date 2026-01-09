@@ -228,7 +228,7 @@ export const useTasks = () => {
           const statusMessages: Record<string, string> = {
             'in_progress': `Task in progress: ${originalTask.title}`,
             'completed': `Task completed: ${originalTask.title}`,
-            'cancelled': `Task cancelled: ${originalTask.title}`,
+            'deferred': `Task deferred: ${originalTask.title}`,
             'open': `Task reopened: ${originalTask.title}`,
           };
 

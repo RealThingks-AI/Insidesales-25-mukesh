@@ -178,7 +178,7 @@ export const useTasksImportExport = (tasks: Task[], onRefresh: () => void) => {
       }
       const userIdMap = await UserNameUtils.fetchUserIdsByNames(userNames);
 
-      const validStatuses: TaskStatus[] = ['open', 'in_progress', 'completed', 'cancelled'];
+      const validStatuses: TaskStatus[] = ['open', 'in_progress', 'completed', 'deferred'];
       const validPriorities: TaskPriority[] = ['high', 'medium', 'low'];
 
       for (let i = 0; i < dataRows.length; i++) {

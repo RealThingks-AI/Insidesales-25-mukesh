@@ -37,7 +37,7 @@ export const TaskAnalyticsDashboard = ({ tasks }: TaskAnalyticsDashboardProps) =
     const completedTasks = tasks.filter(t => t.status === 'completed').length;
     const openTasks = tasks.filter(t => t.status === 'open').length;
     const inProgressTasks = tasks.filter(t => t.status === 'in_progress').length;
-    const cancelledTasks = tasks.filter(t => t.status === 'cancelled').length;
+    const deferredTasks = tasks.filter(t => t.status === 'deferred').length;
 
     const overdueTasks = tasks.filter(t => {
       if (!t.due_date || t.status === 'completed') return false;
@@ -59,7 +59,7 @@ export const TaskAnalyticsDashboard = ({ tasks }: TaskAnalyticsDashboardProps) =
       { name: 'Open', value: openTasks, color: '#3b82f6' },
       { name: 'In Progress', value: inProgressTasks, color: '#8b5cf6' },
       { name: 'Completed', value: completedTasks, color: '#22c55e' },
-      { name: 'Cancelled', value: cancelledTasks, color: '#6b7280' },
+      { name: 'Deferred', value: deferredTasks, color: '#f97316' },
     ].filter(d => d.value > 0);
 
     // Tasks by priority

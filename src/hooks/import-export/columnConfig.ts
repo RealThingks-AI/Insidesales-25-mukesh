@@ -70,7 +70,7 @@ export const getColumnConfig = (table: string): ColumnConfig => {
       ],
       required: ['title'],
       enums: {
-        status: ['open', 'in_progress', 'completed', 'cancelled'],
+        status: ['open', 'in_progress', 'completed', 'deferred'],
         priority: ['low', 'medium', 'high'],
         module_type: ['account', 'contact', 'lead', 'deal', 'meeting', 'general']
       }

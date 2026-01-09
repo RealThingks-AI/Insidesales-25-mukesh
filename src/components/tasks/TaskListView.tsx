@@ -99,7 +99,7 @@ export const TaskListView = ({
   const [searchTerm, setSearchTerm] = useState('');
   // Default to hiding completed tasks unless explicitly set
   const [statusFilter, setStatusFilter] = useState<string>(
-    initialStatusFilter === 'all' ? 'open,in_progress,cancelled' : initialStatusFilter
+    initialStatusFilter === 'all' ? 'open,in_progress,deferred' : initialStatusFilter
   );
   const [hideCompleted, setHideCompleted] = useState(initialStatusFilter === 'all');
   const [priorityFilter, setPriorityFilter] = useState<string>('all');
@@ -202,13 +202,13 @@ export const TaskListView = ({
 
   // Check if any filters are active (active tasks filter is the new default)
   const hasActiveFilters = searchTerm !== '' || 
-    (statusFilter !== 'open,in_progress,cancelled' && statusFilter !== 'all') || 
+    (statusFilter !== 'open,in_progress,deferred' && statusFilter !== 'all') || 
     priorityFilter !== 'all' || 
     assignedToFilter !== 'all';
 
   const clearAllFilters = () => {
     setSearchTerm('');
-    setStatusFilter('open,in_progress,cancelled');
+    setStatusFilter('open,in_progress,deferred');
     setHideCompleted(true);
     setPriorityFilter('all');
     setAssignedToFilter('all');
@@ -230,7 +230,7 @@ export const TaskListView = ({
   };
 
   const getDueDateInfo = (dueDate: string | null, status: string) => {
-    if (!dueDate || status === 'completed' || status === 'cancelled') return { color: '', isOverdue: false, isDueToday: false };
+    if (!dueDate || status === 'completed' || status === 'deferred') return { color: '', isOverdue: false, isDueToday: false };
     const date = new Date(dueDate);
     date.setHours(0, 0, 0, 0);
     const today = new Date();
@@ -292,10 +292,10 @@ export const TaskListView = ({
           </div>
           
           <Select 
-            value={statusFilter === 'open,in_progress,cancelled' ? 'active' : statusFilter} 
+            value={statusFilter === 'open,in_progress,deferred' ? 'active' : statusFilter} 
             onValueChange={(val) => {
               if (val === 'active') {
-                setStatusFilter('open,in_progress,cancelled');
+                setStatusFilter('open,in_progress,deferred');
                 setHideCompleted(true);
               } else if (val === 'all') {
                 setStatusFilter('all');
@@ -315,7 +315,7 @@ export const TaskListView = ({
               <SelectItem value="open">Open</SelectItem>
               <SelectItem value="in_progress">In Progress</SelectItem>
               <SelectItem value="completed">Completed</SelectItem>
-              <SelectItem value="cancelled">Cancelled</SelectItem>
+              <SelectItem value="deferred">Deferred</SelectItem>
             </SelectContent>
           </Select>
 
